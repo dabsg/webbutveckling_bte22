@@ -1,0 +1,68 @@
+body{
+
+height: 100vh;
+
+}
+
+
+
+header{
+grid-area: he;
+background-color: rgb(48, 222, 222);
+
+}
+nav{
+grid-area: nav;
+background-color: rgb(85, 181, 181);
+
+}
+aside{
+grid-area: as;
+background-color: rgb(34, 71, 71);
+
+}
+main{
+    grid-area: ma;
+    background-color: aqua;
+}
+footer{
+    grid-area: fo;
+    background-color: aquamarine;
+}
+
+#wrapper{
+
+    height: 100%;
+    display:grid;
+    grid-template-columns: 25% 25% 25% 12.5% 12.5% ;
+    grid-template-rows: 10% 5% 80% 5%;
+
+    grid-template-areas:
+    "he he he he he"
+    "nav nav nav nav nav"
+    "ma ma ma ma as"
+    "fo fo fo fo fo";
+
+}
+
+@media screen and (max-width:700px) {
+
+ 
+    #wrapper{
+
+        height: 200%;
+        display:grid;
+     
+        grid-template-rows: 10% 5% 40% 40% 5%;
+    
+        grid-template-areas:
+        "he he he he he"
+        "nav nav nav nav nav"
+        "ma ma ma ma ma"
+        "as as as as as"
+        "fo fo fo fo fo";
+    
+    }
+
+
+}
