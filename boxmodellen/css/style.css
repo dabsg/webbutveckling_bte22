@@ -1,0 +1,14 @@
+
+
+.boxar{
+    background-image: url('../bilder/tårta.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    height: 200px;
+    width: 400px;
+    background-color: aqua;
+    padding:80px 100px;
+    border:20px solid;
+    margin:100px 20px 80px 200px;
+}
+
