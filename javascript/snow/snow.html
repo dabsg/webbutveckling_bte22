@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+
+body{
+margin: 0px;
+overflow: hidden;
+background: #dadada;
+
+}
+
+canvas{
+    position:absolute;
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <canvas id ="canvas">  </canvas>
+
+
+
+
+<script>
+
+var x=100;
+var y=100;
+var yspeed=2;
+var xspeed=0;
+var g =0.1;
+var vinkel=0;
+var W=window.innerWidth;  // hämtar sidans bredd
+var H=window.innerHeight; // hämtar sidans höjd
+var antal =150;
+var particles = [];
+
+for (var i=0; i<antal; i++){
+
+    particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*5+1});
+}
+
+
+var canvas = document.getElementById("canvas");  // hämtar en koplling till canvas från DOM träd
+var ctx = canvas.getContext("2d");  // sätter canvas till 2d
+
+
+
+canvas.width=W; // sätter canvas bredd till fönstrets bredd
+canvas.height=H; // sätter canvas höjd till fönstrets höjd
+
+
+
+function draw() {
+    update();
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle="rgba(255,255,255,0.8)";// sätter färg på pennan
+    ctx.beginPath(); //börja rita
+   for(var i=0; i<antal;i++){
+    var p= particles[i];
+    ctx.moveTo(x,y);    // flyttar utan att måla
+    ctx.arc(p.x , p.y,p.r,0*(Math.PI/180), 360*(Math.PI/180),false);
+   }
+   
+    ctx.fill();
+}
+
+function update(){
+
+    vinkel+=2;
+    
+    for(var i=0;i<antal;i++){
+        var p=particles[i];
+        yspeed=yspeed+0.00001*Math.sin(vinkel * Math.PI/180);
+       if( i%3==0){
+        p.y=p.y+yspeed;
+
+       }else{
+        p.y=p.y+yspeed+3;
+        
+
+       }
+        console.log(yspeed);
+        p.x=p.x+Math.cos(vinkel * Math.PI/180)*3.5
+        p.y=p.y+yspeed;
+
+        if((p.y+10)>H){
+
+            p.y=0;        
+            
+            
+        }
+    }
+
+}
+
+
+setInterval(draw,50);  // timer som körs var 50 millisekund
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+
+body{
+margin: 0px;
+overflow: hidden;
+background: #dadada;
+
+}
+
+canvas{
+    position:absolute;
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <canvas id ="canvas">  </canvas>
+
+
+
+
+<script>
+
+var x=100;
+var y=100;
+var yspeed=1;
+var xspeed=0;
+var g =0.6;
+var vinkel=0;
+
+var canvas = document.getElementById("canvas");  // hämtar en koplling till canvas från DOM träd
+var ctx = canvas.getContext("2d");  // sätter canvas till 2d
+
+var W=window.innerWidth;  // hämtar sidans bredd
+var H=window.innerHeight; // hämtar sidans höjd
+
+canvas.width=W; // sätter canvas bredd till fönstrets bredd
+canvas.height=H; // sätter canvas höjd till fönstrets höjd
+
+
+
+function draw() {
+    update();
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle="rgba(255,255,255,0.8)";// sätter färg på pennan
+    ctx.beginPath(); //börja rita
+    ctx.moveTo(x,y);    // flyttar utan att måla
+    ctx.arc(x,y,10,0*(Math.PI/180), 360*(Math.PI/180),false);
+    ctx.fill();
+}
+
+function update(){
+
+    yspeed=yspeed+g;
+
+    
+    
+    x=x+2
+    y=y+yspeed;
+
+    console.log("y värdet är :"+y);
+
+
+    if((y+10)>H){
+
+        yspeed=yspeed-3;
+        y=H-10;
+        yspeed=yspeed*-1;
+
+        
+    }
+
+
+}
+
+
+setInterval(draw,50);  // timer som körs var 50 millisekund
+
+
+
+</script>
+
+</body>
+</html>
