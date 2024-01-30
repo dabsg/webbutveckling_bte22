@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+#button {
+display: none;    
+}
+
+
+
+#window{
+height:427px;
+width:640px;
+overflow:hidden;
+}
+
+#bilder{
+position:relative;
+display:flex;
+}
+
+</style>
+<body>
+    
+
+<div id="window">
+    <div id="bilder">
+        <img src="bilder/img1.jpg" alt="">
+        <img src="bilder/img2.jpg" alt="">
+        <img src="bilder/img3.jpg" alt="">
+    </div>
+</div>
+<button id="button">slide</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+$("#button").show();
+
+
+$("#button").click(function(){
+    
+    $("#bilder").animate({
+        opacity: 0.25,
+        left:"-=640px"
+    },3000,function(){
+        $("#bilder").animate({
+        opacity: 1
+        
+    }); 
+    }
+
+    );
+
+});
+
+
+
+
+
+//$("#bilder").css("left","-100px");
+
+</script>
+</body>
+</html>
